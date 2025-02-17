@@ -16,7 +16,11 @@ from xgboost import XGBClassifier
 import statistics
 import numpy as np
 from sklearn.linear_model import LogisticRegression
-
+import statistics
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+import xgboost as xgb
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -107,10 +111,25 @@ prediction=np.zeros((length_test,mc,mp,mk ))
 #Model options
  
 #none weight:
-    #model = LogisticRegression(penalty=None, solver = 'newton-cg', max_iter= 150)
-    #model = LinearDiscriminantAnalysis()   
-    #model= RandomForestClassifier( n_estimators=100, random_state=0,max_depth=6)    
-    #model = xgb.XGBClassifier(booster='gbtree', 
+    
+# model = LogisticRegression(penalty=None, solver = 'newton-cg', max_iter= 150)
+# model = LinearDiscriminantAnalysis()   
+# model= RandomForestClassifier( n_estimators=100, random_state=0,max_depth=6)    
+# model = xgb.XGBClassifier(booster='gbtree', 
+# objective='binary:logistic',
+#           use_label_encoder=False, 
+#           eval_metric='error',
+#           gamma=0,
+#           learning_rate=0.05,
+#           max_depth=6, 
+#           reg_lambda=10,
+#           subsample=.9,
+#           colsample_bytree=.9, monotone_constraints = (1,1,1))    
+#balanced weight 
+
+#model = LogisticRegression(penalty=None, solver = 'newton-cg', max_iter= 150, max_iter= 150, class_weight='balanced' )  
+#model= RandomForestClassifier( n_estimators=100, random_state=0,max_depth=6, max_iter= 150, class_weight='balanced' )   
+#model = xgb.XGBClassifier(booster='gbtree', 
     # objective='binary:logistic',
     #           use_label_encoder=False, 
     #           eval_metric='error',
@@ -119,35 +138,23 @@ prediction=np.zeros((length_test,mc,mp,mk ))
     #           max_depth=6, 
     #           reg_lambda=10,
     #           subsample=.9,
-    #           colsample_bytree=.9, monotone_constraints = (1,1,1))    
-#balanced weight 
-    #model = LogisticRegression(penalty=None, solver = 'newton-cg', max_iter= 150, max_iter= 150, class_weight='balanced' )  
-    #model= RandomForestClassifier( n_estimators=100, random_state=0,max_depth=6, max_iter= 150, class_weight='balanced' )   
-    #model = xgb.XGBClassifier(booster='gbtree', 
-        # objective='binary:logistic',
-        #           use_label_encoder=False, 
-        #           eval_metric='error',
-        #           gamma=0,
-        #           learning_rate=0.05,
-        #           max_depth=6, 
-        #           reg_lambda=10,
-        #           subsample=.9,
-        #           scale_pos_weight=(975/122),
-        #           colsample_bytree=.9, monotone_constraints = (1,1,1))
+    #           scale_pos_weight=(975/122),
+    #           colsample_bytree=.9, monotone_constraints = (1,1,1))
+    
 #sqrt weight
-    #model = LogisticRegression(penalty=None, solver = 'newton-cg', class_weight={0:1, 1:np.sqrt(975/122)}))   
-    #model= RandomForestClassifier( n_estimators=100, random_state=0,max_depth=6, class_weight={0:1, 1:np.sqrt(975/122)}) 
-    #model = xgb.XGBClassifier(booster='gbtree', 
-        # objective='binary:logistic',
-        #           use_label_encoder=False, 
-        #           eval_metric='error',
-        #           gamma=0,
-        #           learning_rate=0.05,
-        #           max_depth=6, 
-        #           reg_lambda=10,
-        #           subsample=.9,
-        #           scale_pos_weight=np.sqrt(975/122),
-        #           colsample_bytree=.9, monotone_constraints = (1,1,1))
+#model = LogisticRegression(penalty=None, solver = 'newton-cg', class_weight={0:1, 1:np.sqrt(975/122)}))   
+#model= RandomForestClassifier( n_estimators=100, random_state=0,max_depth=6, class_weight={0:1, 1:np.sqrt(975/122)}) 
+#model = xgb.XGBClassifier(booster='gbtree', 
+    # objective='binary:logistic',
+    #           use_label_encoder=False, 
+    #           eval_metric='error',
+    #           gamma=0,
+    #           learning_rate=0.05,
+    #           max_depth=6, 
+    #           reg_lambda=10,
+    #           subsample=.9,
+    #           scale_pos_weight=np.sqrt(975/122),
+    #           colsample_bytree=.9, monotone_constraints = (1,1,1))
         
         
 model = LogisticRegression(penalty=None, solver = 'newton-cg', max_iter= 150)
