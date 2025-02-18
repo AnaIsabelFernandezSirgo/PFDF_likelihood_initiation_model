@@ -24,7 +24,8 @@ from sklearn.metrics import roc_curve, roc_auc_score
 
 import warnings
 warnings.filterwarnings("ignore")
-#this needs is previously saved when you use the file with name file data_2_feature_matrices 
+
+#this needs is previously saved when you use the file with name file data_2_feature_matrices.py 
 #(check names) 
 #options of data 
 #i10_2.npy ( LR is SWA_10 and SWB_10)
@@ -32,9 +33,10 @@ warnings.filterwarnings("ignore")
 #i30_2.npy (LR is SWA_30 and SWB_30)
 #i60_2.npy (LR is SWA_60 and SWB_60)
 # all other algorithms dont have a specific name but they use these features 
-data_rained= np.load("i15_2.npy")
-#permutation matrice seed (this was done becasue we where using Matlab and python )
 
+data_rained= np.load("i15_2.npy")
+
+#permutation matrice seed (this was done becasue we where using Matlab and python )
 matrix_train=pd.read_csv(r"D:\Fire_Mar24\train_4k.csv",  header=None)
 matrix_test=pd.read_csv(r"D:\Fire_Mar24\test_4k.csv",  header=None)
 
@@ -61,6 +63,7 @@ r_train=np.concatenate((z, o,z, o,z, o,z, o));
 r_train=np.append(r_train, r_train[0])
 z=np.zeros((325,1));
 o=np.ones((41,1));
+
 # Indecies of selected models 
 #SWA features is index 8 but in python you start to count on 0 so index 7
 #SWB features is index 6 but in python you start to count on 0 so index 5
@@ -113,7 +116,7 @@ k=0
 prediction=np.zeros((length_test,mc,mp,mk ))
 
 
-#Model options
+#MODELS 
  
 #none weight:
     
@@ -163,7 +166,7 @@ prediction=np.zeros((length_test,mc,mp,mk ))
     #           scale_pos_weight=np.sqrt(975/122),
     #           colsample_bytree=.9, monotone_constraints = (1,1,1))
         
-
+#Chosen model 
 model = LogisticRegression(penalty=None, solver = 'newton-cg', max_iter= 150, class_weight={0:1, 1:np.sqrt(975/122)})
 
 
@@ -284,7 +287,7 @@ for cc in range (mc):
 
 #this is the one you save 
 metric_table =np.column_stack((ts_median, positive_predictive_value_or_precision, false_positive_rate, true_negative_rate_or_specificity, positive_predictive_value, negative_predicted_value, recall_or_sensitivity_or_true_positive_rate, f1_score, ra))
-#save accordingly to use in metric.py
+#save accordingly to use in accuracy_table.py
 
 #this is to visualaze     
 metric_table=pd.DataFrame(metric_table)
