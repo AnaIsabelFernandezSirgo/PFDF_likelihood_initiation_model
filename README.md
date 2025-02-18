@@ -14,5 +14,5 @@ If you run and save the results of two_2_feature_models.py with different algori
 
 SWA_ SWB_models are the models selected for i15 and i30, which will give the three coefficients for the model. Shapley values and PDP are run on the models, so the file has the models created with SWA and SWB features for the four algorithms with i15 and their graphs. 
 
-To run the watershed threshold, download con01.xlsx and data_clean_xlsx and run the watershed initiation value. It will give the values at which SWA and SWB would trigger a debris flow for 3 watersheds. We trained with Pinal Fire Watershed 651 South, Tadpole Fire Watershed D, and Contreras Fire, which we did not train on; we tested  Watershed CON 01. 
+To run the watershed threshold, download con01.xlsx and data_clean.xlsx and run then watershed initiation value. It will give the values at which SWA and SWB would trigger a debris flow for 3 watersheds. We trained with Pinal Fire Watershed 651 South, Tadpole Fire Watershed D, and Contreras Fire, which we did not train on; we tested  Watershed CON 01. 
 
