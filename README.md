@@ -16,7 +16,10 @@ To run either 2_feature_models.py or 3_feature_models.py, you also need to downl
 
 Since threat score (TS) is the metric used to determine postfire debris-flow likelihood, the results for each script are the mean TS from the 4-fold, and the median TS from the 10-permutation run, ranked in decreasing order. Next to each TS is a number from 0 to 79 (or 0 to 399), indicating the feature combination. You can find the feature combinations in variables.xlsx. Remember: Python indexes from 0, so if you want to investigate a feature combination further, subtract 1 when looking it up in Excel.
 
-two_2_feature_models.py, as the name says, only runs two 2-feature models — the ones selected for the SWA and SWB models. It also requires train_4k.csv, test_4k.csv, and the output from data_2_feature_matrices.py, saved as i10_2, i15_2, i30_2, i60_2 (same as 2_feature_models.py). The SWA and SWB models use logistic regression, i15 intensity, and square root weighting by default, but the code can be edited to use other algorithms, intensities, or weights. The result includes different accuracy metrics for just these two models.
+two_2_feature_models.py, as the name suggests, runs only two 2-feature models. These models use the feature combinations selected for the SWA and SWB models. To run this script, you need to download train_4k.csv and test_4k.csv, and run data_2_feature_matrices.py, saving the outputs as expected by two_2_feature_models.py:
+i10_2, i15_2, i30_2, and i60_2.
 
-SWA_SWB_models.py runs the final models selected for i15 and i30 using the SWA and SWB features. It outputs the three model coefficients for each case. It also runs SHAP (Shapley) values and PDP (partial dependence plots), so this file includes the models created for the four algorithms at i15, along with their interpretation graphs.
+By default, the SWA and SWB models use logistic regression (LR), the i15 rainfall intensity, and square root weighting. However, the code can be easily modified to run with any other algorithm, weighting method, or rainfall intensity. The output includes multiple accuracy metrics, but only for these two specific models — one algorithm, one intensity, one weighting.
+
+ 
 
