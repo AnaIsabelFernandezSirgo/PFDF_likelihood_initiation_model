@@ -1,5 +1,8 @@
 Overview
+
 This repository contains scripts to build and evaluate post-fire debris flow prediction models using 2- and 3-feature combinations under different algorithms, rainfall intensities, and weighting schemes. Below are detailed instructions for running each script and the required input files.
+
+Instructions
 
 In order to run 2_feature_models.py, you need to download data_rained.xlsx and run data_2_feature_matrices.py, saving the outputs as called in 2_feature_models.py:
 i10_2, i15_2, i30_2, i60_2.
