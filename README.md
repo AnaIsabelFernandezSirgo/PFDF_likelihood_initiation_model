@@ -2,6 +2,13 @@ Overview
 
 This repository contains scripts to build and evaluate post-fire debris flow prediction models using 2- and 3-feature combinations under different algorithms, rainfall intensities, and weighting schemes. Below are detailed instructions for running each script and the required input files.
 
+Data:
+* Lon_lat_clean.xlsx contains fire names, watershed identifiers, latitude, and longitude — but does not include rainfall data.
+* data_clean.xlsx contains full rainfall information, but the associated fires are not identified.
+* PFDF_AZNM_inventory.xlsx is the final reduced dataset, which includes rainfall metrics alongside fire names, latitude, and longitude for spatial and event-specific reference.
+* data_rain.xlsx is a processed version of data_clean.xlsx, where rainfall intensities have been multiplied across all features and the dataset has been reduced.
+
+
 Instructions
 
 In order to run 2_feature_models.py, you need to download data_rained.xlsx and run data_2_feature_matrices.py, saving the outputs as called in 2_feature_models.py:
