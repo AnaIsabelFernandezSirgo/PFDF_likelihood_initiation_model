@@ -1,4 +1,4 @@
-# Post-Fire Debris-Flow Initiatation Prediction Models
+# Post-Fire Debris-Flow Likelihood Initiatation Models
 
 ## Overview
 
